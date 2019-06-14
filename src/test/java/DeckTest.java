@@ -15,20 +15,19 @@ public class DeckTest {
         card = new Card(SuitType.SPADES, RankType.ACE);
     }
 
-    @Test
-    public void aDeckStartsEmpty(){
-        assertEquals(0, deck.numberOfCardsInDeck());
-    }
+//    @Test
+//    public void aDeckStartsEmpty(){
+//        assertEquals(0, deck.numberOfCardsInDeck());
+//    }
 
-    @Test
-    public void aCardCanBeAddedToTheDeck(){
-        deck.addCardToDeck(card);
-        assertEquals(1, deck.numberOfCardsInDeck());
-    }
+//    @Test
+//    public void aCardCanBeAddedToTheDeck(){
+//        deck.addCardToDeck(card);
+//        assertEquals(1, deck.numberOfCardsInDeck());
+//    }
 
     @Test
     public void allCardVarietiesCanBeAddedToTheDeck(){
-        deck.populate();
         assertEquals(52, deck.numberOfCardsInDeck());
     }
 
@@ -36,8 +35,6 @@ public class DeckTest {
     public void theDeckShuffleAndDealsARandomCard(){
         Card unshuffledCard = new Card(SuitType.HEARTS, RankType.ACE);
         Deck deck1 = new Deck();
-        deck1.populate();
-        deck1.shuffle();
         Card card1 = deck1.dealACard();
         assertNotEquals(unshuffledCard, card1);
 //         log should be a different card each time test is run
