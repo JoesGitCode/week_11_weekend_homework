@@ -6,32 +6,57 @@ import static org.junit.Assert.assertNotEquals;
 
 public class GameTest {
 
+    Game game;
     Dealer dealer;
     Deck deck;
+    Player player;
 
     @Before
     public void before(){
-        dealer = new Dealer();
         deck = new Deck();
+        dealer = new Dealer();
+        player = new Player();
+        game = new Game(deck, dealer, player);
+
     }
 
-//    @Test
-//    public void canAddCardToDealersHand(){
-//        Card card = dealer.dealACard(deck);
-//        dealer.addCard(card);
-//        assertEquals(1, dealer.numberOfCardsInHandDealer());
-//        assertEquals(51, deck.numberOfCardsInDeck());
-//
-//    }
-//
-//
-//    @Test
-//    public void canCalculateDealersHand(){
-//        dealer.dealACard(deck);
-//        assertNotEquals(50, dealer.dealerHandValue());
-//        // couldnt figure out how to test this
-//        // so it should print a random integer between 1 and 10
-//        System.out.println(dealer.dealerHandValue());
-//    }
+    @Test
+    public void canAddACardToTheDealer(){
+        game.addCardToDealer();
+        assertEquals(1, dealer.numberOfCardsInHandDealer());
+        assertEquals(51, deck.numberOfCardsInDeck());
+    }
+
+    @Test
+    public void canDealTwoCardsToDealer(){
+        game.play();
+        assertEquals(2, dealer.numberOfCardsInHandDealer());
+        assertEquals(48, deck.numberOfCardsInDeck());
+        System.out.println(dealer.dealerHandValue());
+    }
+
+    @Test
+    public void canAddACardToThePlayer(){
+        game.addCardToPlayer();
+        assertEquals(1, player.numberOfCardsInHand());
+        assertEquals(51, deck.numberOfCardsInDeck());
+    }
+
+    @Test
+    public void canDealTwoCardsToPlayer(){
+        game.play();
+        assertEquals(2, player.numberOfCardsInHand());
+        assertEquals(48, deck.numberOfCardsInDeck());
+        System.out.println(player.playerHandValue());
+    }
+
+    @Test
+    public void theHighestCardTotalWins(){
+        assertEquals("win", game.play());
+        System.out.println(player.playerHandValue());
+        System.out.println(dealer.dealerHandValue());
+
+    }
+
 
 }
