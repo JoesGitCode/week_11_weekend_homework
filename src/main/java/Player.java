@@ -23,6 +23,15 @@ public class Player {
         return total;
     }
 
+    public ArrayList getPlayerHand(){
+        ArrayList cards = new ArrayList<String>();
+        for (Card card : playerHand){
+            String rankString = card.rankType.toString();
+            cards.add(rankString);
+        }
+        return cards;
+    }
+
     public void resetHand(){
         playerHand.clear();
     }

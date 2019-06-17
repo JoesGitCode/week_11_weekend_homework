@@ -22,6 +22,10 @@ public class Dealer {
         dealerHand.add(card);
     }
 
+    public ArrayList<Card> dealersHand(){
+        return dealerHand;
+    }
+
     public int dealerHandValue(){
         int total = 0;
         for (Card card : dealerHand){
